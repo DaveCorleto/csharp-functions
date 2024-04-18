@@ -9,16 +9,43 @@ namespace csharp_functions
         static void Main(string[] args)
         {
             // Stampa un nuovo array 
-            static void StampaArray(int[] array)
+            //static void StampaArray(int[] array)
+            //{
+            //    Console.Write("(");
+            //    for (int i = 0; i < array.Length; i++)
+            //    {
+            //        Console.Write(array[i]);
+            //        if (i < array.Length - 1)
+            //            Console.Write(", ");
+            //    }
+            //    Console.Write(")");
+            //}
+            //Versione generica 
+
+            static void StampaArray<T>(T[] array, int n = 0)
             {
-                Console.Write("(");
-                for (int i = 0; i < array.Length; i++)
+                if (n == 0)
                 {
-                    Console.Write(array[i]);
-                    if (i < array.Length - 1)
-                        Console.Write(", ");
+                    Console.Write("(");
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        Console.Write(array[i]);
+                        if (i < array.Length - 1)
+                            Console.Write(", ");
+                    }
+                    Console.WriteLine(")");
                 }
-                Console.Write(")");
+                else
+                {
+                    Console.Write("(");
+                    for (int i = 0; i < n && i < array.Length; i++)
+                    {
+                        Console.Write(array[i]);
+                        if (i < n - 1 && i < array.Length - 1)
+                            Console.Write(", ");
+                    }
+                    Console.WriteLine(")");
+                }
             }
 
             // Restituisce il quadrato di un numero 
@@ -29,7 +56,7 @@ namespace csharp_functions
             }
             int[] copiaArray = new int[] { };
 
-            //Funzione per QUADRATARE! gli array! 
+            //Funzione per QUADRATARE! gli array 
             int[] ElevaArrayAlQuadrato(int[] array)
             {
                 // Copio l'array in modo da non modificare l'originale
@@ -61,18 +88,27 @@ namespace csharp_functions
                     // Aggiungo l'elemento corrente all'accumulatore somma
                     somma += arrayCopia[i];
                 }
-                Console.WriteLine(somma);
+                //Console.WriteLine(somma);
                 // Restituisco la somma
                 return somma;
                 
             }
 
+
             int[] arraydinumeriinteri = new int[] { 2, 6, 7, 5, 3, 9 };
+
+            int sommastandard = sommaElementiArray(arraydinumeriinteri);
 
             int[] arrayAlQuadrato = ElevaArrayAlQuadrato(arraydinumeriinteri);
 
             int sommaAlQuadrato = sommaElementiArray(arrayAlQuadrato);
 
+            Console.WriteLine("Inserisci il numero di elementi che conterrà l'array");
+
+            int n = 0;
+            n = Convert.ToInt32(Console.ReadLine());
+
+            int [] array = new int[n];     
 
             Console.WriteLine("Stampare l’array di numeri fornito a video (arraydinumeriinteri):");
 
@@ -94,12 +130,13 @@ namespace csharp_functions
             Console.WriteLine("Ora sommo i vari elementi dell'array e stampo la somma di tutti i numeri: ");
 
             sommaElementiArray(arraydinumeriinteri);
+            Console.WriteLine(sommastandard) ;
             Console.WriteLine();
 
             Console.WriteLine("Ora sommo i vari elementi dell'array al QUADRATO e stampo la somma: ");
 
             sommaElementiArray(arrayAlQuadrato);
-            
+            Console.WriteLine(sommaAlQuadrato);   
 
 
 
