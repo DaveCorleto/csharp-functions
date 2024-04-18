@@ -22,7 +22,7 @@ namespace csharp_functions
             //}
             //Versione generica 
 
-            static void StampaArray<T>(T[] array, int n = 0)
+            static void StampaArray(int[] array, int n = 0)
             {
                 if (n == 0)
                 {
@@ -103,13 +103,6 @@ namespace csharp_functions
 
             int sommaAlQuadrato = sommaElementiArray(arrayAlQuadrato);
 
-            Console.WriteLine("Inserisci il numero di elementi che conterrà l'array");
-
-            int n = 0;
-            n = Convert.ToInt32(Console.ReadLine());
-
-            int [] array = new int[n];     
-
             Console.WriteLine("Stampare l’array di numeri fornito a video (arraydinumeriinteri):");
 
             StampaArray(arraydinumeriinteri);
@@ -136,12 +129,49 @@ namespace csharp_functions
             Console.WriteLine("Ora sommo i vari elementi dell'array al QUADRATO e stampo la somma: ");
 
             sommaElementiArray(arrayAlQuadrato);
-            Console.WriteLine(sommaAlQuadrato);   
+            Console.WriteLine(sommaAlQuadrato);
 
 
+            //Versione Custom...
 
 
+            Console.WriteLine("Inserisci il numero di elementi che conterrà l'array:");
+            int n = Convert.ToInt32(Console.ReadLine());
 
+            int[] ilTuoArray = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"Inserisci l'elemento {i + 1} dell'array:");
+                ilTuoArray[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            int sommatuoArray = sommaElementiArray(ilTuoArray);
+
+            int[] tuoArrayAlQuadrato = ElevaArrayAlQuadrato(ilTuoArray);
+
+            int tuaSommaAlQuadrato = sommaElementiArray(tuoArrayAlQuadrato);
+
+            Console.WriteLine("Stampare l’array di numeri fornito a video (arraydinumeriinteri):");
+            StampaArray(ilTuoArray); 
+
+            Console.WriteLine();
+
+            Console.WriteLine("Stampare l’array di numeri fornito a video, dove ogni numero è stato prima elevato al quadrato: ");
+            StampaArray(tuoArrayAlQuadrato); 
+
+            Console.WriteLine();
+            Console.WriteLine("Verifico che l'array originale sia rimasto intatto: ");
+            StampaArray(ilTuoArray); 
+
+            Console.WriteLine();
+            Console.WriteLine("Ora sommo i vari elementi dell'array e stampo la somma di tutti i numeri: ");
+            Console.WriteLine(sommatuoArray);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Ora sommo i vari elementi dell'array al QUADRATO e stampo la somma: ");
+            Console.WriteLine(tuaSommaAlQuadrato);
 
 
         }
